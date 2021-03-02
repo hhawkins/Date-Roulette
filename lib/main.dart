@@ -5,6 +5,8 @@ import 'package:Date_Roulette/screens/welcome_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'constants.dart';
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(DateRoulette());
@@ -13,11 +15,18 @@ Future main() async {
 class DateRoulette extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(initialRoute: WelcomeScreen.id, routes: {
-      WelcomeScreen.id: (context) => WelcomeScreen(),
-      LoginScreen.id: (context) => LoginScreen(),
-      SignupScreen.id: (context) => SignupScreen(),
-      MainTabScreen.id: (context) => MainTabScreen(),
+    return MaterialApp(
+      theme: ThemeData(
+        scaffoldBackgroundColor: kColorWhite,
+        primaryColor: kButtonPrimaryColor,
+        accentColor: kButtonSecondaryColor,
+      ),
+      initialRoute: WelcomeScreen.id, 
+      routes: {
+        WelcomeScreen.id: (context) => WelcomeScreen(),
+        LoginScreen.id: (context) => LoginScreen(),
+        SignupScreen.id: (context) => SignupScreen(),
+        MainTabScreen.id: (context) => MainTabScreen(),
     });
   }
 }

@@ -62,7 +62,8 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
             RoundedButton(
               title: 'Register',
-              color: Colors.blueAccent,
+              color: kButtonPrimaryColor,
+              textColor: kColorWhite,
               onPressed: () async {
                 setState(() {
                   showSpinner = true;
@@ -76,6 +77,14 @@ class _SignupScreenState extends State<SignupScreen> {
                 } catch (e) {
                   print(e);
                 }
+              },
+            ),
+            RoundedButton(
+              title: 'Back',
+              color: kButtonSecondaryColor,
+              textColor: kColorBlack,
+              onPressed: () {
+                Navigator.pop(context);
               },
             ),
           ],

@@ -66,6 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
               RoundedButton(
                 title: 'Log In',
                 color: kButtonPrimaryColor,
+                textColor: kColorWhite,
                 onPressed: () async {
                   setState(() {
                     showSpinner = true;
@@ -86,6 +87,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   }
                 },
               ),
+              RoundedButton(
+              title: 'Back',
+              color: kButtonSecondaryColor,
+              textColor: kColorBlack,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
             ],
           ),
         ),
