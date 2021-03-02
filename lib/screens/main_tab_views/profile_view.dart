@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../welcome_screen.dart';
+
 class ProfileView extends StatefulWidget {
   static const String id = 'profile_view';
 
@@ -17,10 +19,9 @@ class _ProfileViewState extends State<ProfileView> {
             IconButton(
                 icon: Icon(Icons.close),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.pushNamed(context, WelcomeScreen.id);
                 }),
           ],
-          title: Text('⚡️Chat'),
           backgroundColor: Colors.lightBlueAccent,
         ),
         body: Scaffold());

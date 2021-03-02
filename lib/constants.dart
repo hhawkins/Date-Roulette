@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 const kButtonPrimaryColor = Color(0xff9C0000);
 const kButtonSecondaryColor = Color(0xffFFE9E9);
 const kButtonLastColor = Color(0xffFFFFFF);
+const kColorBlack = Color(0xff000000);
+const kColorWhite = Color(0xffFFFFFF);
 
 const kTextFieldDecoration = InputDecoration(
   hintText: 'Enter a value',

@@ -27,7 +27,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       vsync: this,
     );
 
-    animation = ColorTween(begin: Colors.blueGrey, end: Colors.white)
+    animation = ColorTween(begin: kButtonSecondaryColor, end: kColorWhite)
         .animate(controller);
 
     controller.forward();
@@ -67,6 +67,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   textStyle: TextStyle(
                     fontSize: 45.0,
                     fontWeight: FontWeight.w900,
+                    color: kColorBlack,
                   ),
                 ),
               ],
@@ -77,6 +78,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             RoundedButton(
               title: 'Log In',
               color: kButtonPrimaryColor,
+              textColor: kColorWhite,
               onPressed: () {
                 Navigator.pushNamed(context, LoginScreen.id);
               },
@@ -84,6 +86,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             RoundedButton(
               title: 'Register',
               color: kButtonSecondaryColor,
+              textColor: kColorBlack,
               onPressed: () {
                 Navigator.pushNamed(context, SignupScreen.id);
               },
