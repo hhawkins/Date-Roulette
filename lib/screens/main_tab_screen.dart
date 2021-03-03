@@ -1,8 +1,8 @@
 import 'package:Date_Roulette/screens/main_tab_views/profile_view.dart';
 import 'package:flutter/material.dart';
 
-import 'main_tab_views/cupertino_main_scaffold.dart';
-import 'main_tab_views/tab_item.dart';
+import 'cupertino_main_scaffold.dart';
+import 'tab_item.dart';
 
 class MainTabScreen extends StatefulWidget {
   static const String id = 'main_tab_screen';
@@ -12,13 +12,13 @@ class MainTabScreen extends StatefulWidget {
 }
 
 class _MainTabScreenState extends State<MainTabScreen> {
-  TabItem _currentTab = TabItem.teams;
+  TabItem _currentTab = TabItem.discover;
 
   Map<TabItem, WidgetBuilder> get widgetBuilders {
     return {
-      TabItem.teams: (_) => Scaffold(),
       // Scaffold is a place holder till the views are built
-      TabItem.new_event: (_) => Scaffold(),
+      TabItem.discover: (_) => Scaffold(),
+      TabItem.chamber: (_) => Scaffold(),
       TabItem.profile: (_) => ProfileView(),
     };
   }
