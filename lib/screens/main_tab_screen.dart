@@ -1,4 +1,4 @@
-import 'package:Date_Roulette/screens/main_tab_views/profile_view.dart';
+import 'package:Date_Roulette/screens/main_tab_views/settings_view.dart';
 import 'package:flutter/material.dart';
 
 import 'cupertino_main_scaffold.dart';
