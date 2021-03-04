@@ -1,9 +1,6 @@
 import 'package:Date_Roulette/components/rounded_button.dart';
 import 'package:Date_Roulette/constants.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
-import '../welcome_screen.dart';
 
 class ProfileView extends StatefulWidget {
   static const String id = 'profile_view';
@@ -33,17 +30,41 @@ class _ProfileViewState extends State<ProfileView> {
                       tag: 'JJ',
                       child: Container(
                         child: Image.asset('images/JJ.png'),
-                        width: 370.0,
+                        width: 350.0,
                       ),
                     ),
-                    // Container(
-                    // margin: EdgeInsets.all(2.0),
-                    // decoration: BoxDecoration(
-                    //   color: kColorBlack,
-                    //   shape: BoxShape.circle
-                    // ),),
-                    // Text(
-                    //   'John Jacobs'
+                    // Column(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: <Widget>[
+                    //     Stack(
+                    //       children: <Widget>[
+                    //         Center(
+
+                    //         ),
+                    //         Container(
+                    //           margin: EdgeInsets.fromLTRB(0, 30, 30, 30),
+                    //           width: 100,
+                    //           height: 100,
+                    //           decoration: BoxDecoration(
+                    //             color: kButtonSecondaryColor,
+                    //             shape: BoxShape.circle
+                    //           ),
+                    //         ),
+                    //         Text('JJ')
+                    //       ],
+                    //     ),
+                    //   ],
+                    // ),
+                    // Column(
+                    //   mainAxisAlignment: MainAxisAlignment.start,
+                      
+                    //   children: <Widget>[
+                    //     Text('Test',
+                    //     //textAlign: ,
+                    //     textDirection: TextDirection.rtl,),
+                    //     Text('JJacobs@gmail.com', 
+                    //     textDirection: TextDirection.rtl,),
+                    //   ],
                     // ),
                   ],
                 ),
