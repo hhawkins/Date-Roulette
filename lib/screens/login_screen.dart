@@ -88,13 +88,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
               ),
               RoundedButton(
-              title: 'Back',
-              color: kButtonSecondaryColor,
-              textColor: kColorBlack,
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
+                title: 'Back',
+                color: kButtonSecondaryColor,
+                textColor: kColorBlack,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
             ],
           ),
         ),

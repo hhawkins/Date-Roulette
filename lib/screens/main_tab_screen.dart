@@ -1,3 +1,4 @@
+import 'package:Date_Roulette/screens/main_tab_views/chamber_view.dart';
 import 'package:Date_Roulette/screens/main_tab_views/settings_view.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class _MainTabScreenState extends State<MainTabScreen> {
     return {
       // Scaffold is a place holder till the views are built
       TabItem.discover: (_) => Scaffold(),
-      TabItem.chamber: (_) => Scaffold(),
+      TabItem.chamber: (_) => ChamberView(),
       TabItem.profile: (_) => ProfileView(),
     };
   }
