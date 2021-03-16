@@ -14,15 +14,15 @@ class _ProfileViewState extends State<ProfileView> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.0), 
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
+      padding: EdgeInsets.symmetric(horizontal: 24.0),
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -57,12 +57,12 @@ class _ProfileViewState extends State<ProfileView> {
                     // ),
                     // Column(
                     //   mainAxisAlignment: MainAxisAlignment.start,
-                      
+
                     //   children: <Widget>[
                     //     Text('Test',
                     //     //textAlign: ,
                     //     textDirection: TextDirection.rtl,),
-                    //     Text('JJacobs@gmail.com', 
+                    //     Text('JJacobs@gmail.com',
                     //     textDirection: TextDirection.rtl,),
                     //   ],
                     // ),
@@ -73,76 +73,73 @@ class _ProfileViewState extends State<ProfileView> {
                 ),
                 RoundedButton(
                   title: 'Profile',
-                    color: kColorWhite,
-                    textColor: kColorBlack,
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+                  color: kColorWhite,
+                  textColor: kColorBlack,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 ),
                 RoundedButton(
                   title: 'Preferences',
-                    color: kColorWhite,
-                    textColor: kColorBlack,
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+                  color: kColorWhite,
+                  textColor: kColorBlack,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 ),
                 RoundedButton(
                   title: 'Notifications',
-                    color: kColorWhite,
-                    textColor: kColorBlack,
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+                  color: kColorWhite,
+                  textColor: kColorBlack,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 ),
                 RoundedButton(
                   title: 'Invite Friends',
-                    color: kColorWhite,
-                    textColor: kColorBlack,
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+                  color: kColorWhite,
+                  textColor: kColorBlack,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 ),
                 SizedBox(
                   height: 70.0,
                 ),
                 RoundedButton(
                   title: 'Save',
-                    color: kButtonPrimaryColor,
-                    textColor: kColorWhite,
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+                  color: kButtonPrimaryColor,
+                  textColor: kColorWhite,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  
-                  children: <Widget>[
-                    RoundedButton(
-                  title: 'Delete Account',
-                    color: kColorWhite,
-                    textColor: kColorBlack,
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                ),
-                SizedBox(
-                  width: 30.0,
-                ),
-                RoundedButton(
-                  title: 'Log Out',
-                    color: kButtonSecondaryColor,
-                    textColor: kColorBlack,
-                    onPressed: () {
-                      Navigator.of(context, rootNavigator: true).pop();
-                    },
-                ),
-                  ]
-                ),
-              ],)
-            ]
-          ),
-        )
-    );
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      RoundedButton(
+                        title: 'Delete Account',
+                        color: kColorWhite,
+                        textColor: kColorBlack,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      SizedBox(
+                        width: 30.0,
+                      ),
+                      RoundedButton(
+                        title: 'Log Out',
+                        color: kButtonSecondaryColor,
+                        textColor: kColorBlack,
+                        onPressed: () {
+                          Navigator.of(context, rootNavigator: true).pop();
+                        },
+                      ),
+                    ]),
+              ],
+            )
+          ]),
+    ));
   }
 }
