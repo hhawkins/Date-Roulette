@@ -1,5 +1,9 @@
 import 'package:Date_Roulette/components/rounded_button.dart';
 import 'package:Date_Roulette/constants.dart';
+import 'package:Date_Roulette/screens/main_tab_views/profile_settings/notification_screen.dart';
+import 'package:Date_Roulette/screens/main_tab_views/profile_settings/preference_screen.dart';
+import 'package:Date_Roulette/screens/main_tab_views/profile_settings/profile_screen.dart';
+import 'package:Date_Roulette/screens/main_tab_views/profile_settings/sharing_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProfileView extends StatefulWidget {
@@ -73,35 +77,47 @@ class _ProfileViewState extends State<ProfileView> {
                 ),
                 RoundedButton(
                   title: 'Profile',
-                  color: kColorWhite,
-                  textColor: kColorBlack,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
+                    color: kColorWhite,
+                    textColor: kColorBlack,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ProfileScreen()),
+                      );
+                    },
                 ),
                 RoundedButton(
                   title: 'Preferences',
-                  color: kColorWhite,
-                  textColor: kColorBlack,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
+                    color: kColorWhite,
+                    textColor: kColorBlack,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PreferenceScreen()),
+                      );
+                    },
                 ),
                 RoundedButton(
                   title: 'Notifications',
-                  color: kColorWhite,
-                  textColor: kColorBlack,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
+                    color: kColorWhite,
+                    textColor: kColorBlack,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => NotificationScreen()),
+                      );
+                    },
                 ),
                 RoundedButton(
                   title: 'Invite Friends',
-                  color: kColorWhite,
-                  textColor: kColorBlack,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
+                    color: kColorWhite,
+                    textColor: kColorBlack,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SharingScreen()),
+                      );
+                    },
                 ),
                 SizedBox(
                   height: 70.0,
