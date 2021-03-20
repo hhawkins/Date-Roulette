@@ -9,23 +9,23 @@ class NotificationScreen extends StatefulWidget {
 }
 
 class _NotificationScreenState extends State<NotificationScreen> {
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Notifications'),
-            actions: <Widget>[
-              FlatButton(
-                textColor: Colors.white,
-                onPressed: () {},
-                child: Text('Done'),
-                shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
-              )
-            ],
-          ),
-          body: Center(child: Column()),
-        ));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Notifications'),
+        actions: <Widget>[
+          FlatButton(
+            textColor: Colors.white,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text('Save'),
+            shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
+          )
+        ],
+      ),
+      body: Center(child: Column()),
+    );
   }
 }

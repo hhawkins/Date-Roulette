@@ -19,48 +19,52 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
         actions: <Widget>[
           FlatButton(
             textColor: Colors.white,
-            onPressed: () {},
-            child: Text('Done'),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text('Save'),
             shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
           )
         ],
       ),
-      body: Center(child: Column(
-        children: <Widget>[
-          TextField(
-            keyboardType: TextInputType.emailAddress,
-            textAlign: TextAlign.center,
-            onChanged: (value) {
-              email = value;
-            },
-            decoration:
-            kTextFieldDecoration.copyWith(hintText: 'First Name'),
-          ),
-          SizedBox(
-            height: 8.0,
-          ),
-          TextField(
-            keyboardType: TextInputType.emailAddress,
-            textAlign: TextAlign.center,
-            onChanged: (value) {
-              email = value;
-            },
-            decoration:
-            kTextFieldDecoration.copyWith(hintText: 'Last Name'),
-          ),
-          SizedBox(
-            height: 8.0,
-          ),
-        ]
-        )
-      )),
+      body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              TextField(
+                keyboardType: TextInputType.text,
+                textAlign: TextAlign.center,
+                // onChanged: (value) {
+                //   email = value;
+                // },
+                decoration:
+                    kTextFieldDecoration.copyWith(hintText: 'First Name'),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              TextField(
+                keyboardType: TextInputType.text,
+                textAlign: TextAlign.center,
+                // onChanged: (value) {
+                //   email = value;
+                // },
+                decoration:
+                    kTextFieldDecoration.copyWith(hintText: 'Last Name'),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+            ],
+          )),
     );
   }
 }

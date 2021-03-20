@@ -9,23 +9,23 @@ class SharingScreen extends StatefulWidget {
 }
 
 class _SharingScreenState extends State<SharingScreen> {
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Sharing'),
-            actions: <Widget>[
-              FlatButton(
-                textColor: Colors.white,
-                onPressed: () {},
-                child: Text('Done'),
-                shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
-              )
-            ],
-          ),
-          body: Center(child: Column()),
-        ));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Sharing'),
+        actions: <Widget>[
+          FlatButton(
+            textColor: Colors.white,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text('Save'),
+            shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
+          )
+        ],
+      ),
+      body: Center(child: Column()),
+    );
   }
 }
