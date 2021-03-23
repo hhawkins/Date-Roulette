@@ -30,112 +30,120 @@ class _ProfileViewState extends State<ProfileView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Hero(
-                      tag: 'JJ',
-                      child: Container(
-                        child: Image.asset('images/JJ.png'),
-                        width: 350.0,
-                      ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Stack(
+                          children: [
+                            Positioned(
+                              child: Container(
+                                margin: EdgeInsets.fromLTRB(0, 30, 30, 30),
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                    color: kButtonSecondaryColor,
+                                    shape: BoxShape.circle),
+                              ),
+                            ),
+                            Positioned(
+                              left: 30,
+                              bottom: 60,
+                              child: Center(
+                                  child: Container(
+                                      child: Text(
+                                'JJ',
+                                style: new TextStyle(
+                                  fontSize: 40.0,
+                                  // color: Colors.yellow,
+                                ),
+                              ))),
+                            )
+                          ],
+                        ),
+                      ],
                     ),
-                    // Column(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: <Widget>[
-                    //     Stack(
-                    //       children: <Widget>[
-                    //         Center(
-
-                    //         ),
-                    //         Container(
-                    //           margin: EdgeInsets.fromLTRB(0, 30, 30, 30),
-                    //           width: 100,
-                    //           height: 100,
-                    //           decoration: BoxDecoration(
-                    //             color: kButtonSecondaryColor,
-                    //             shape: BoxShape.circle
-                    //           ),
-                    //         ),
-                    //         Text('JJ')
-                    //       ],
-                    //     ),
-                    //   ],
-                    // ),
-                    // Column(
-                    //   mainAxisAlignment: MainAxisAlignment.start,
-
-                    //   children: <Widget>[
-                    //     Text('Test',
-                    //     //textAlign: ,
-                    //     textDirection: TextDirection.rtl,),
-                    //     Text('JJacobs@gmail.com',
-                    //     textDirection: TextDirection.rtl,),
-                    //   ],
-                    // ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          'John Jacobs',
+                          //textAlign: ,
+                          textDirection: TextDirection.rtl,
+                        ),
+                        Text(
+                          'JJacobs@gmail.com',
+                          textDirection: TextDirection.rtl,
+                        ),
+                      ],
+                    ),
                   ],
                 ),
                 SizedBox(
-                  height: 60.0,
+                  height: 30.0,
                 ),
                 RoundedButton(
                   title: 'Profile',
-                    color: kColorWhite,
-                    textColor: kColorBlack,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ProfileScreen()),
-                      );
-                    },
+                  color: kColorWhite,
+                  textColor: kColorBlack,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfileScreen()),
+                    );
+                  },
                 ),
                 RoundedButton(
                   title: 'Preferences',
-                    color: kColorWhite,
-                    textColor: kColorBlack,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => PreferenceScreen()),
-                      );
-                    },
+                  color: kColorWhite,
+                  textColor: kColorBlack,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PreferenceScreen()),
+                    );
+                  },
                 ),
                 RoundedButton(
                   title: 'Notifications',
-                    color: kColorWhite,
-                    textColor: kColorBlack,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => NotificationScreen()),
-                      );
-                    },
+                  color: kColorWhite,
+                  textColor: kColorBlack,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => NotificationScreen()),
+                    );
+                  },
                 ),
                 RoundedButton(
                   title: 'Invite Friends',
-                    color: kColorWhite,
-                    textColor: kColorBlack,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SharingScreen()),
-                      );
-                    },
+                  color: kColorWhite,
+                  textColor: kColorBlack,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SharingScreen()),
+                    );
+                  },
                 ),
                 SizedBox(
                   height: 70.0,
                 ),
-                RoundedButton(
-                  title: 'Save',
-                  color: kButtonPrimaryColor,
-                  textColor: kColorWhite,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
+                // RoundedButton(
+                //   title: 'Save',
+                //   color: kButtonPrimaryColor,
+                //   textColor: kColorWhite,
+                //   onPressed: () {
+                //     Navigator.pop(context);
+                //   },
+                // ),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       RoundedButton(
                         title: 'Delete Account',
-                        color: kColorWhite,
+                        color: kButtonSecondaryColor,
                         textColor: kColorBlack,
                         onPressed: () {
                           Navigator.pop(context);
@@ -146,8 +154,8 @@ class _ProfileViewState extends State<ProfileView> {
                       ),
                       RoundedButton(
                         title: 'Log Out',
-                        color: kButtonSecondaryColor,
-                        textColor: kColorBlack,
+                        color: kButtonPrimaryColor,
+                        textColor: kColorWhite,
                         onPressed: () {
                           Navigator.of(context, rootNavigator: true).pop();
                         },
