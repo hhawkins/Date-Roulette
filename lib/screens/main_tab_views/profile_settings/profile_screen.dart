@@ -9,6 +9,23 @@ class ProfileScreen extends StatefulWidget {
   _ProfileScreenState createState() => _ProfileScreenState();
 }
 
+class DataInputField {
+  // ignore: missing_return
+  Widget build(BuildContext context) {
+    Align(
+      alignment: Alignment.centerLeft,
+      // child: Container
+      child: Text(
+        'First Name',
+        style: TextStyle(fontSize: 20.0),
+      ),
+    );
+  }
+
+  // @override
+  // _TextField createState() => _TextField ();
+}
+
 class _ProfileScreenState extends State<ProfileScreen> {
   String firstName;
   String lastName;
@@ -22,6 +39,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
+        backgroundColor: kButtonPrimaryColor,
         actions: <Widget>[
           FlatButton(
             textColor: Colors.white,
@@ -34,37 +52,138 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ],
       ),
       body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.0),
+        padding: const EdgeInsets.all(20.0),
+        child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
+            children: <Widget>[
+              Align(
+                alignment: Alignment.centerLeft,
+                // child: Container
+                child: Text(
+                  'First Name',
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
+              SizedBox(
+                height: 10.0,
+                width: 250.0,
+                child: Divider(
+                  color: Colors.black,
+                ),
+              ),
               TextField(
-                keyboardType: TextInputType.text,
+                keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
-                // onChanged: (value) {
-                //   email = value;
-                // },
+                onChanged: (value) {
+                  email = value;
+                },
                 decoration:
                     kTextFieldDecoration.copyWith(hintText: 'First Name'),
               ),
               SizedBox(
                 height: 8.0,
               ),
+              Align(
+                alignment: Alignment.centerLeft,
+                // child: Container
+                child: Text(
+                  'Last Name',
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
               TextField(
-                keyboardType: TextInputType.text,
+                keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
-                // onChanged: (value) {
-                //   email = value;
-                // },
+                onChanged: (value) {
+                  email = value;
+                },
                 decoration:
                     kTextFieldDecoration.copyWith(hintText: 'Last Name'),
               ),
               SizedBox(
                 height: 8.0,
               ),
+              Align(
+                alignment: Alignment.centerLeft,
+                // child: Container
+                child: Text(
+                  'Email',
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
+              TextField(
+                keyboardType: TextInputType.emailAddress,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  email = value;
+                },
+                decoration: kTextFieldDecoration.copyWith(hintText: 'Email'),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                // child: Container
+                child: Text(
+                  'Phone Number',
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
+              TextField(
+                keyboardType: TextInputType.emailAddress,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  email = value;
+                },
+                decoration:
+                    kTextFieldDecoration.copyWith(hintText: 'Phone Number'),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                // child: Container
+                child: Text(
+                  'Location',
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
+              TextField(
+                keyboardType: TextInputType.emailAddress,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  email = value;
+                },
+                decoration: kTextFieldDecoration.copyWith(hintText: 'Location'),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                // child: Container
+                child: Text(
+                  'Age',
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
+              TextField(
+                keyboardType: TextInputType.emailAddress,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  email = value;
+                },
+                decoration: kTextFieldDecoration.copyWith(hintText: 'Age'),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
             ],
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
