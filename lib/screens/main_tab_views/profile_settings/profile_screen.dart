@@ -9,38 +9,21 @@ class ProfileScreen extends StatefulWidget {
   _ProfileScreenState createState() => _ProfileScreenState();
 }
 
-class DataInputField extends StatefulWidget {
-
+class DataInputField {
   // ignore: missing_return
-  // Widget build(BuildContext context) {
-  //   Align(
-  //     alignment: Alignment.centerLeft,
-  //     // child: Container
-  //     child: Text(
-  //       'First Name',
-  //       style: TextStyle(fontSize: 20.0),
-  //     ),
-  //   );
-  // }
-
-  @override
-  State<StatefulWidget> createState() => _dataInputField();
-}
-
-class _dataInputField extends State<DataInputField> {
-  @override
   Widget build(BuildContext context) {
-    return TextField(
-        keyboardType: TextInputType.emailAddress,
-        textAlign: TextAlign.center,
-        onChanged: (value) {
-          //email = value;
-        },
-        decoration:
-        kTextFieldDecoration.copyWith(hintText: 'First Name'),
+    Align(
+      alignment: Alignment.centerLeft,
+      // child: Container
+      child: Text(
+        'First Name',
+        style: TextStyle(fontSize: 20.0),
+      ),
     );
   }
 
+  // @override
+  // _TextField createState() => _TextField ();
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
@@ -50,8 +33,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   String phoneNumber;
   String location;
   int age;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +71,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   color: Colors.black,
                 ),
               ),
-              DataInputField(),
+              TextField(
+                keyboardType: TextInputType.emailAddress,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  email = value;
+                },
+                decoration:
+                    kTextFieldDecoration.copyWith(hintText: 'First Name'),
+              ),
               SizedBox(
                 height: 8.0,
               ),
