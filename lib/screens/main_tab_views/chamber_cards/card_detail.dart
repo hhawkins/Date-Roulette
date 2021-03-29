@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ChamberView extends StatefulWidget {
-  static const String id = 'chamber_view';
+class CardDetailView extends StatefulWidget {
+  static const String id = 'card_detail';
 
   @override
-  _ChamberViewState createState() => _ChamberViewState();
+  _CardDetailViewState createState() => _CardDetailViewState();
 }
 
-class _ChamberViewState extends State<ChamberView> {
+class _CardDetailViewState extends State<CardDetailView> {
   @override
   void initState() {
     super.initState();
@@ -16,6 +16,9 @@ class _ChamberViewState extends State<ChamberView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Details'),
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: ListView(),
