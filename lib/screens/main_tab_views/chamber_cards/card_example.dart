@@ -27,7 +27,7 @@ class CardExample extends StatelessWidget {
         color: color,
         borderRadius: BorderRadius.circular(15.0),
         border: Border.all(
-          width: 7.0,
+          width: 2.0,
           color: Colors.transparent.withOpacity(0.3),
         ),
       ),
