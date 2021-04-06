@@ -16,17 +16,17 @@ class DateRoulette extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        scaffoldBackgroundColor: kColorWhite,
-        primaryColor: kButtonPrimaryColor,
-        accentColor: kButtonSecondaryColor,
-      ),
-      initialRoute: WelcomeScreen.id, 
-      routes: {
-        WelcomeScreen.id: (context) => WelcomeScreen(),
-        LoginScreen.id: (context) => LoginScreen(),
-        SignupScreen.id: (context) => SignupScreen(),
-        MainTabScreen.id: (context) => MainTabScreen(),
-    });
+        theme: ThemeData(
+          scaffoldBackgroundColor: kColorWhite,
+          primaryColor: kButtonPrimaryColor,
+          accentColor: Color.fromRGBO(0, 0, 0, 80), //kButtonSecondaryColor,
+        ),
+        initialRoute: WelcomeScreen.id,
+        routes: {
+          WelcomeScreen.id: (context) => WelcomeScreen(),
+          LoginScreen.id: (context) => LoginScreen(),
+          SignupScreen.id: (context) => SignupScreen(),
+          MainTabScreen.id: (context) => MainTabScreen(),
+        });
   }
 }

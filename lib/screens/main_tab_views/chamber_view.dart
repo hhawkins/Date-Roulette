@@ -24,96 +24,17 @@ class _ChamberViewState extends State<ChamberView> {
     super.initState();
   }
 
-  List<NewItem> items = <NewItem>[
-    NewItem(
-        false, // isExpanded ?
-        'First Date', // header
-        Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Column(children: <Widget>[
-              RoundedButton(
-                title: 'Details',
-                color: kButtonSecondaryColor,
-                textColor: kColorBlack,
-                // onPressed: () {
-                //   Navigator.push(
-                //     context,
-                //     MaterialPageRoute(builder: (context) => CardDetailView()),
-                //   );
-                // },
-              ),
-            ])), // body
-        Icon(Icons.image) // iconPic
-        ),
-    NewItem(
-        false, // isExpanded ?
-        'Second Date', // header
-        Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Column(children: <Widget>[
-              RoundedButton(
-                title: 'Details',
-                color: kButtonSecondaryColor,
-                textColor: kColorBlack,
-                // onPressed: () {
-                //   Navigator.push(
-                //     context,
-                //     MaterialPageRoute(builder: (context) => CardDetailView()),
-                //   );
-                // },
-              ),
-            ])), // body
-        Icon(Icons.image) // iconPic
-        ),
-    NewItem(
-        false, // isExpanded ?
-        'Third Date', // header
-        Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Column(children: <Widget>[
-              RoundedButton(
-                title: 'Details',
-                color: kButtonSecondaryColor,
-                textColor: kColorBlack,
-                // onPressed: () {
-                //   Navigator.push(
-                //     context,
-                //     MaterialPageRoute(builder: (context) => CardDetailView()),
-                //   );
-                // },
-              ),
-            ])), // body
-        Icon(Icons.image) // iconPic
-        ),
-    NewItem(
-        false, // isExpanded ?
-        'Fourth Date', // header
-        Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Column(children: <Widget>[
-              RoundedButton(
-                title: 'Details',
-                color: kButtonSecondaryColor,
-                textColor: kColorBlack,
-                // onPressed: () {
-                //   Navigator.push(
-                //     context,
-                //     MaterialPageRoute(builder: (context) => CardDetailView()),
-                //   );
-                // },
-              ),
-            ])), // body
-        Icon(Icons.image) // iconPic
-        ),
-  ];
-  //ListView List_Criteria;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
-        child: ListView(
+        child: ListWheelScrollView(
+          itemExtent: 80.0,
+          diameterRatio: 1.2,
+          offAxisFraction: -0.7,
+          // useMagnifier: true,
+          // magnification: 1.5,
           children: [
             SizedBox(
               height: 100.0,
@@ -121,31 +42,50 @@ class _ChamberViewState extends State<ChamberView> {
             /* The current implementation is a place holder
             eventually, we'd like to have a smooth setup for the cards like this
             https://github.com/2d-inc/HistoryOfEverything */
-            //buildChamberCard(context)
-            ExpansionPanelList(
-              expansionCallback: (int index, bool isExpanded) {
-                setState(() {
-                  items[index].isExpanded = !items[index].isExpanded;
-                });
-              },
-              children: items.map((NewItem item) {
-                return ExpansionPanel(
-                  headerBuilder: (BuildContext context, bool isExpanded) {
-                    return ListTile(
-                        leading: item.iconpic,
-                        title: Text(
-                          item.header,
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ));
-                  },
-                  isExpanded: item.isExpanded,
-                  body: item.body,
-                );
-              }).toList(),
+            buildChamberCard(
+              context,
+              "First Date",
+              Colors.red,
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            buildChamberCard(
+              context,
+              "Second date",
+              Colors.blue,
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            buildChamberCard(
+              context,
+              "Second date",
+              Colors.orange,
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            buildChamberCard(
+              context,
+              "Second date",
+              Colors.indigo,
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            buildChamberCard(
+              context,
+              "The next card is the last date",
+              Colors.green,
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            buildChamberCard(
+              context,
+              "This is the last date",
+              Colors.purple,
             ),
           ],
         ),
@@ -153,22 +93,34 @@ class _ChamberViewState extends State<ChamberView> {
     );
   }
 
-  Card buildChamberCard(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
+  Container buildChamberCard(
+    BuildContext context,
+    String text,
+    Color color,
+  ) {
+    return Container(
+      // Warning: hard-coding values like this is a bad practice
+      padding: EdgeInsets.all(0.0),
+      decoration: BoxDecoration(
+        color: color,
         borderRadius: BorderRadius.circular(15.0),
+        border: Border.all(
+          width: 2.0,
+          color: Colors.transparent.withOpacity(0.3),
+        ),
       ),
-      color: Colors.red,
       child: ExpansionTile(
         // leading: FlutterLogo(
         //   size: 72.0,
         // ),
-        title: Text("First Date"),
-        backgroundColor: kButtonSecondaryColor,
+        title: Text(
+          text,
+        ),
+        //backgroundColor: kButtonSecondaryColor,
         childrenPadding: EdgeInsets.symmetric(horizontal: 24.0),
         children: [
           Text(
-            "First Date",
+            text,
             style: TextStyle(
               fontSize: 36.0,
               color: Colors.black.withOpacity(0.8),
@@ -176,7 +128,7 @@ class _ChamberViewState extends State<ChamberView> {
             ),
           ),
           SizedBox(
-            height: 30.0,
+            height: 10.0,
           ),
           RoundedButton(
             title: 'Details',
