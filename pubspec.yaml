@@ -23,7 +23,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  intl: ^0.15.7
+  date_format: ^2.0.2
+  multi_select_flutter: ^4.0.0
   animated_text_kit: ^3.1.0
   modal_progress_hud: ^0.1.3
   swipeable_card: ^1.0.2
@@ -56,28 +58,70 @@ flutter:
   assets:
     - images/
 
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware.
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Dosis
+      fonts:
+        - asset: Fonts/Dosis-VariableFont_wght.ttf
+    - family: Fascinate
+      fonts:
+        - asset: Fonts/Fascinate-Regular.ttf
+    - family: FasterOneRegular
+      fonts:
+        - asset: Fonts/FasterOne-Regular.ttf
+    - family: FaunaOneRegular
+      fonts:
+        - asset: Fonts/FaunaOne-Regular.ttf
+    - family: LobsterTwoBold
+      fonts:
+        - asset: Fonts/LobsterTwo-Bold.ttf
+    - family: LobsterTwoBoldItalic
+      fonts:
+        - asset: Fonts/LobsterTwo-BoldItalic.ttf
+    - family: LobsterTwoItalic
+      fonts:
+        - asset: Fonts/LobsterTwo-Italic.ttf
+    - family: LobsterTwoRegular
+      fonts:
+        - asset: Fonts/LobsterTwo-Regular.ttf
+    - family: MerriweatherBlack
+      fonts:
+        - asset: Fonts/Merriweather-Black.ttf
+    - family: MerriweatherBlackItalic
+      fonts:
+        - asset: Fonts/Merriweather-BlackItalic.ttf
+    - family: MerriweatherBold
+      fonts:
+        - asset: Fonts/Merriweather-Bold.ttf
+    - family: MerriweatherBoldItalic
+      fonts:
+        - asset: Fonts/Merriweather-BoldItalic.ttf
+    - family: MerriweatherItalic
+      fonts:
+        - asset: Fonts/Merriweather-Italic.ttf
+    - family: MerriweatherLight
+      fonts:
+        - asset: Fonts/Merriweather-Light.ttf
+    - family: MerriweatherLightItalic
+      fonts:
+        - asset: Fonts/Merriweather-LightItalic.ttf
+    - family: MerriweatherRegular
+      fonts:
+        - asset: Fonts/Merriweather-Regular.ttf
+    - family: MonotonRegular
+      fonts:
+        - asset: Fonts/Monoton-Regular.ttf
+    - family: PlayfairDisplayItalicVariableFontwght
+      fonts:
+        - asset: Fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf
+    - family: PlayfairDisplayVariableFontwght
+      fonts:
+        - asset: Fonts/PlayfairDisplay-VariableFont_wght.ttf
+    - family: StalinistOneRegular
+      fonts:
+        - asset: Fonts/StalinistOne-Regular.ttf
+    - family: ZillaSlabHighlightBold
+      fonts:
+        - asset: Fonts/ZillaSlabHighlight-Bold.ttf
+    - family: ZillaSlabHighlightRegular
+      fonts:
+        - asset: Fonts/ZillaSlabHighlight-Regular.ttf
