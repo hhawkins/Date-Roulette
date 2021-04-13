@@ -1,3 +1,4 @@
+import 'package:Date_Roulette/components/DateTimePicker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../constants.dart';
@@ -24,10 +25,10 @@ class DataInputField extends StatefulWidget {
   // }
 
   @override
-  State<StatefulWidget> createState() => _dataInputField();
+  State<StatefulWidget> createState() => _DataInputField();
 }
 
-class _dataInputField extends State<DataInputField> {
+class _DataInputField extends State<DataInputField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
@@ -37,7 +38,7 @@ class _dataInputField extends State<DataInputField> {
           //email = value;
         },
         decoration:
-        kTextFieldDecoration.copyWith(hintText: 'First Name'),
+        kTextFieldDecoration.copyWith(hintText: 'Enter First Name'),
     );
   }
 
@@ -71,35 +72,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
         child: Center(
-          child: Column(
+          child: ListView (
+          // Column(
             children: <Widget>[
               Align(
                 alignment: Alignment.centerLeft,
                 // child: Container
                 child: Text(
                   'First Name',
-                  style: TextStyle(fontSize: 20.0),
+                  style: TextStyle(fontSize: 16.0,
+                    fontFamily: 'MerriweatherBold'
+                  ),
                 ),
               ),
-              SizedBox(
-                height: 10.0,
-                width: 250.0,
-                child: Divider(
-                  color: Colors.black,
-                ),
-              ),
+              //////Inserted Method DataInputField;
               DataInputField(),
               SizedBox(
-                height: 8.0,
+                height: 20.0,
               ),
               Align(
                 alignment: Alignment.centerLeft,
                 // child: Container
                 child: Text(
                   'Last Name',
-                  style: TextStyle(fontSize: 20.0),
+                  style: TextStyle(fontSize: 16.0, fontFamily: 'MerriweatherBold'
+                  ),
                 ),
               ),
               TextField(
@@ -109,17 +108,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   email = value;
                 },
                 decoration:
-                    kTextFieldDecoration.copyWith(hintText: 'Last Name'),
+                    kTextFieldDecoration.copyWith(hintText: 'Enter Last Name'),
               ),
               SizedBox(
-                height: 8.0,
+                height: 20.0,
               ),
               Align(
                 alignment: Alignment.centerLeft,
                 // child: Container
                 child: Text(
                   'Email',
-                  style: TextStyle(fontSize: 20.0),
+                  style: TextStyle(fontSize: 16.0,fontFamily: 'MerriweatherBold',
+                  ),
                 ),
               ),
               TextField(
@@ -128,17 +128,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 onChanged: (value) {
                   email = value;
                 },
-                decoration: kTextFieldDecoration.copyWith(hintText: 'Email'),
+                decoration: kTextFieldDecoration.copyWith(hintText: 'Enter Email'),
               ),
               SizedBox(
-                height: 8.0,
+                height: 20.0,
               ),
               Align(
                 alignment: Alignment.centerLeft,
                 // child: Container
                 child: Text(
                   'Phone Number',
-                  style: TextStyle(fontSize: 20.0),
+                  style: TextStyle(fontSize: 16.0, fontFamily: 'MerriweatherBold',
+                  ),
                 ),
               ),
               TextField(
@@ -148,17 +149,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   email = value;
                 },
                 decoration:
-                    kTextFieldDecoration.copyWith(hintText: 'Phone Number'),
+                    kTextFieldDecoration.copyWith(hintText: 'Enter Phone Number'),
               ),
               SizedBox(
-                height: 8.0,
+                height: 20.0,
               ),
               Align(
                 alignment: Alignment.centerLeft,
                 // child: Container
                 child: Text(
                   'Location',
-                  style: TextStyle(fontSize: 20.0),
+                  style: TextStyle(fontSize: 16.0, fontFamily: 'MerriweatherBold',
+                  ),
                 ),
               ),
               TextField(
@@ -167,17 +169,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 onChanged: (value) {
                   email = value;
                 },
-                decoration: kTextFieldDecoration.copyWith(hintText: 'Location'),
+                decoration: kTextFieldDecoration.copyWith(hintText: 'Enter Location'),
               ),
               SizedBox(
-                height: 8.0,
+                height: 20.0,
               ),
               Align(
                 alignment: Alignment.centerLeft,
                 // child: Container
                 child: Text(
                   'Age',
-                  style: TextStyle(fontSize: 20.0),
+                  style: TextStyle(fontSize: 16.0, fontFamily: 'MerriweatherBold',
+                  ),
                 ),
               ),
               TextField(
@@ -186,11 +189,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 onChanged: (value) {
                   email = value;
                 },
-                decoration: kTextFieldDecoration.copyWith(hintText: 'Age'),
+                decoration: kTextFieldDecoration.copyWith(hintText: 'Enter Age'),
               ),
-              SizedBox(
-                height: 8.0,
-              ),
+             // DateTimePicker(),///////////////////////////////////////////////////////////////////////////////////////
             ],
           ),
         ),

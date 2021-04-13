@@ -23,7 +23,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  intl: ^0.15.7
+  date_format: ^2.0.2
+  multi_select_flutter: ^4.0.0
   animated_text_kit: ^3.1.0
   modal_progress_hud: ^0.1.3
   swipeable_card: ^1.0.2
@@ -63,63 +65,63 @@ flutter:
     - family: Fascinate
       fonts:
         - asset: Fonts/Fascinate-Regular.ttf
-    - family: FasterOne Regular
+    - family: FasterOneRegular
       fonts:
         - asset: Fonts/FasterOne-Regular.ttf
-    - family: FaunaOne Regular
+    - family: FaunaOneRegular
       fonts:
         - asset: Fonts/FaunaOne-Regular.ttf
-    - family: LobsterTwo Bold
+    - family: LobsterTwoBold
       fonts:
         - asset: Fonts/LobsterTwo-Bold.ttf
-    - family: LobsterTwo BoldItalic
+    - family: LobsterTwoBoldItalic
       fonts:
         - asset: Fonts/LobsterTwo-BoldItalic.ttf
-    - family: LobsterTwo Italic
+    - family: LobsterTwoItalic
       fonts:
         - asset: Fonts/LobsterTwo-Italic.ttf
-    - family: LobsterTwo Regular
+    - family: LobsterTwoRegular
       fonts:
         - asset: Fonts/LobsterTwo-Regular.ttf
-    - family: Merriweather Black
+    - family: MerriweatherBlack
       fonts:
         - asset: Fonts/Merriweather-Black.ttf
-    - family: Merriweather BlackItalic
+    - family: MerriweatherBlackItalic
       fonts:
-            - asset: Fonts/Merriweather-BlackItalic.ttf
-    - family: Merriweather Bold
+        - asset: Fonts/Merriweather-BlackItalic.ttf
+    - family: MerriweatherBold
       fonts:
         - asset: Fonts/Merriweather-Bold.ttf
-    - family: Merriweather BoldItalic
+    - family: MerriweatherBoldItalic
       fonts:
         - asset: Fonts/Merriweather-BoldItalic.ttf
-    - family: Merriweather Italic
+    - family: MerriweatherItalic
       fonts:
         - asset: Fonts/Merriweather-Italic.ttf
-    - family: Merriweather Light
+    - family: MerriweatherLight
       fonts:
         - asset: Fonts/Merriweather-Light.ttf
-    - family: Merriweather LightItalic
+    - family: MerriweatherLightItalic
       fonts:
         - asset: Fonts/Merriweather-LightItalic.ttf
-    - family: Merriweather_Regular
+    - family: MerriweatherRegular
       fonts:
         - asset: Fonts/Merriweather-Regular.ttf
-    - family: Monoton Regular
+    - family: MonotonRegular
       fonts:
         - asset: Fonts/Monoton-Regular.ttf
-    - family: PlayfairDisplay Italic VariableFont wght
+    - family: PlayfairDisplayItalicVariableFontwght
       fonts:
         - asset: Fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf
-    - family: PlayfairDisplay VariableFont wght
+    - family: PlayfairDisplayVariableFontwght
       fonts:
         - asset: Fonts/PlayfairDisplay-VariableFont_wght.ttf
-    - family: StalinistOne Regular
+    - family: StalinistOneRegular
       fonts:
         - asset: Fonts/StalinistOne-Regular.ttf
-    - family: ZillaSlabHighlight Bold
+    - family: ZillaSlabHighlightBold
       fonts:
         - asset: Fonts/ZillaSlabHighlight-Bold.ttf
-    - family: ZillaSlabHighlight Regular
+    - family: ZillaSlabHighlightRegular
       fonts:
         - asset: Fonts/ZillaSlabHighlight-Regular.ttf
