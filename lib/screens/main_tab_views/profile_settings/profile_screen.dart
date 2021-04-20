@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
   static const String id = 'profile_screen';
@@ -10,18 +11,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class DataInputField extends StatefulWidget {
-
-  // ignore: missing_return
-  // Widget build(BuildContext context) {
-  //   Align(
-  //     alignment: Alignment.centerLeft,
-  //     // child: Container
-  //     child: Text(
-  //       'First Name',
-  //       style: TextStyle(fontSize: 20.0),
-  //     ),
-  //   );
-  // }
 
   @override
   State<StatefulWidget> createState() => _DataInputField();
@@ -44,13 +33,24 @@ class _DataInputField extends State<DataInputField> {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  String userInput;
   String firstName;
   String lastName;
   String email;
   String phoneNumber;
   String location;
   int age;
-
+  //shared preferences
+  _saveUserInput () async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(userInput, 'userInput');
+   // prefs.remove('my_int_key');
+  }
+  _getUserInput () async {
+    final prefs = await SharedPreferences.getInstance();
+    final myString = prefs.getString(userInput) ?? '';
+    prefs.remove('my_int_key');
+  }
 
 
   @override
@@ -63,7 +63,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           FlatButton(
             textColor: Colors.white,
             onPressed: () {
-              Navigator.pop(context);
+             Navigator.pop(context);
+                _saveUserInput();
             },
             child: Text('Save'),
             shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
@@ -103,9 +104,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               TextField(
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
-                onChanged: (value) {
-                  email = value;
-                },
+                // onChanged: (value) {
+                //   lastName = value;
+                // },
                 decoration:
                     kTextFieldDecoration.copyWith(hintText: 'Enter Last Name'),
               ),

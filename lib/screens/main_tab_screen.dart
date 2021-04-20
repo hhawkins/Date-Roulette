@@ -21,7 +21,7 @@ class _MainTabScreenState extends State<MainTabScreen> {
       // Scaffold is a place holder till the views are built
       TabItem.discover: (_) => DiscoverView(),
       TabItem.chamber: (_) => ChamberView(),
-      TabItem.profile: (_) => ProfileView(),
+      TabItem.profile: (_) => SettingsView(),
     };
   }
 

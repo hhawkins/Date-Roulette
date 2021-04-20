@@ -23,6 +23,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  line_awesome_flutter: ^1.0.1
+  flutter_screenutil: ^1.0.2
+  animated_theme_switcher: ^1.0.5
+    #Test packages for settings view ^
+  shared_preferences: ^2.0.5
+  syncfusion_flutter_datepicker: ^19.1.56-beta
   intl: ^0.15.7
   date_format: ^2.0.2
   multi_select_flutter: ^4.0.0
@@ -45,7 +51,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

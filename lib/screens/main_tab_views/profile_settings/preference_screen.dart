@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:multi_select_flutter/chip_display/multi_select_chip_display.dart';
 import 'package:multi_select_flutter/dialog/multi_select_dialog_field.dart';
 import 'package:multi_select_flutter/util/multi_select_item.dart';
 import 'package:multi_select_flutter/util/multi_select_list_type.dart';
 import '../../../constants.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+
 
 class PreferenceScreen extends StatefulWidget {
   PreferenceScreen({Key key, this.title}) : super(key: key);
@@ -39,6 +42,31 @@ class _PreferenceScreenState extends State<PreferenceScreen> {
   final _items = _dateCategory
       .map((date) => MultiSelectItem<DateCategory>(date, date.name))
       .toList();
+
+  String _selectedDate = '';
+  String _dateCount = '';
+  String _range = '';
+  String _rangeCount = '';
+
+  void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
+    setState(() {
+      if (args.value is PickerDateRange) {
+        _range =
+            DateFormat('dd/MM/yyyy').format(args.value.startDate).toString() +
+                ' - ' +
+                DateFormat('dd/MM/yyyy')
+                    .format(args.value.endDate ?? args.value.startDate)
+                    .toString();
+      } else if (args.value is DateTime) {
+        _selectedDate = args.value;
+      } else if (args.value is List<DateTime>) {
+        _dateCount = args.value.length.toString();
+      } else {
+        _rangeCount = args.value.length.toString();
+      }
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -76,11 +104,11 @@ class _PreferenceScreenState extends State<PreferenceScreen> {
                     width: 2,
                   ),
                 ),
-                // buttonIcon:
-                // Icon(
-                //   Icons.expand_more,
-                //   size: 20,
-                // ),
+                buttonIcon:
+                Icon(
+                  Icons.expand_more,
+                  size: 20,
+                ),
                 buttonText: Text(
                   "I'm Looking For...",
                   style: TextStyle(
@@ -118,7 +146,7 @@ class _PreferenceScreenState extends State<PreferenceScreen> {
               ),
               DropdownButton<String>(
                 value: dropdownValue,
-                icon: const Icon(Icons.get_app),
+                icon: const Icon(Icons.expand_more),
                 isExpanded: true,
                 iconSize: 40,
                 elevation: 16,
@@ -154,38 +182,14 @@ class _PreferenceScreenState extends State<PreferenceScreen> {
                   ),
                 ),
               ),
-              DropdownButton<String>(
-                value: dropdownValue,
-                icon: const Icon(Icons.expand_more),
-                isExpanded: true,
-                iconSize: 40,
-                elevation: 16,
-                style: const TextStyle(color: kButtonPrimaryColor),
-                underline: Container(
-                  height: 2,
-                  color: kButtonPrimaryColor,
-                ),
-                onChanged: (String newValue) {
-                  setState(() {
-                    // dropdownValue = newValue;
-                  });
-                },
-                items: <String>[
-                  'Select',
-                  'Monday',
-                  'Tuesday',
-                  'Wednesday',
-                  'Thursday',
-                  'Friday'
-                ].map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
+              //Date Child Inserted
+              SfDateRangePicker(
+                view: DateRangePickerView.year,
+                onSelectionChanged: _onSelectionChanged,
+                  selectionMode: DateRangePickerSelectionMode.range,
               ),
               SizedBox(
-                height: 30.0,
+                height: 20.0,
               ),
               Align(
                 alignment: Alignment.centerLeft,
@@ -222,6 +226,9 @@ class _PreferenceScreenState extends State<PreferenceScreen> {
                     child: Text(value),
                   );
                 }).toList(),
+              ),
+              SizedBox(
+                height: 60.0,
               ),
             ],
           ),
