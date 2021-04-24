@@ -1,5 +1,8 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:multi_select_flutter/chip_display/multi_select_chip_display.dart';
 import 'package:multi_select_flutter/dialog/multi_select_dialog_field.dart';
@@ -7,7 +10,6 @@ import 'package:multi_select_flutter/util/multi_select_item.dart';
 import 'package:multi_select_flutter/util/multi_select_list_type.dart';
 import '../../../constants.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-
 
 class PreferenceScreen extends StatefulWidget {
   PreferenceScreen({Key key, this.title}) : super(key: key);
@@ -67,22 +69,33 @@ class _PreferenceScreenState extends State<PreferenceScreen> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Preferences'),
-        actions: <Widget>[
-          TextButton(
-            style: TextButton.styleFrom(primary: Colors.white),
-            //textColor: Colors.white,
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text('Save'),
-            //style: CircleBorder(side: BorderSide(color: Colors.transparent)),
-          ),
+        backgroundColor: kButtonPrimaryColor,
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(LineAwesomeIcons.chevron_circle_left),
+              iconSize: 40,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              tooltip: 'back to menu',
+            );
+          },
+        ),
+        actions: [
+          IconButton(
+              icon: Icon(LineAwesomeIcons.save),
+              iconSize: 30,
+              tooltip: 'back to menu',
+              onPressed: () {
+                Navigator.pop(context);
+              }),
+          // CircleBorder(side: BorderSide(color: Colors.transparent)),
         ],
       ),
       body: SingleChildScrollView(
@@ -94,34 +107,42 @@ class _PreferenceScreenState extends State<PreferenceScreen> {
               SizedBox(height: 20),
               MultiSelectDialogField(
                 items: _items,
+                itemsTextStyle: TextStyle(
+                  color: kColorBlack,
+                ),
                 title: Text("Select"),
-                selectedColor: kButtonPrimaryColor,
+                selectedItemsTextStyle: TextStyle(
+                  color: kColorBlack,
+                ),
+                selectedColor:
+                    kButtonPrimaryColor, //check box fill and CANCEL and OK
                 decoration: BoxDecoration(
-                  //color: kButtonPrimaryColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
                   border: Border.all(
                     color: kButtonPrimaryColor,
                     width: 2,
                   ),
                 ),
-                buttonIcon:
-                Icon(
-                  Icons.expand_more,
-                  size: 20,
+                buttonIcon: Icon(
+                  LineAwesomeIcons.eye,
+                  size: ScreenUtil().setSp(kSpacingUnit.w * 2),
                 ),
                 buttonText: Text(
                   "I'm Looking For...",
                   style: TextStyle(
-                    color: Colors.black,
                     fontSize: 16,
                     fontFamily: 'MerriweatherBold',
                   ),
                 ),
                 listType: MultiSelectListType.LIST,
                 onConfirm: (value) {
-                   _dateCategory = value;
+                  _dateCategory = value;
                 },
                 chipDisplay: MultiSelectChipDisplay(
+                  chipColor: kButtonPrimaryColor.withOpacity(0.3),
+                  textStyle: TextStyle(
+                    color: kColorBlack,
+                  ),
                   onTap: (value) {
                     setState(() {
                       _dateCategory.remove(value); //= value;
@@ -146,9 +167,9 @@ class _PreferenceScreenState extends State<PreferenceScreen> {
               ),
               DropdownButton<String>(
                 value: dropdownValue,
-                icon: const Icon(Icons.expand_more),
+                icon: const Icon(LineAwesomeIcons.angle_down),
                 isExpanded: true,
-                iconSize: 40,
+                iconSize: 20,
                 elevation: 16,
                 style: const TextStyle(color: kButtonPrimaryColor),
                 underline: Container(
@@ -182,14 +203,15 @@ class _PreferenceScreenState extends State<PreferenceScreen> {
                   ),
                 ),
               ),
-              //Date Child Inserted
+              ///////////////////////////////////DateRangePicker Child Inserted
               SfDateRangePicker(
                 view: DateRangePickerView.year,
                 onSelectionChanged: _onSelectionChanged,
-                  selectionMode: DateRangePickerSelectionMode.range,
+                selectionMode: DateRangePickerSelectionMode.range,
               ),
+              buildNotificationOptionRow("Add Events to Calendar", true),
               SizedBox(
-                height: 20.0,
+                height: 40.0,
               ),
               Align(
                 alignment: Alignment.centerLeft,
@@ -205,8 +227,8 @@ class _PreferenceScreenState extends State<PreferenceScreen> {
               ),
               DropdownButton<String>(
                 value: dropdownValue,
-                icon: const Icon(Icons.expand_more),
-                iconSize: 40,
+                icon: const Icon(LineAwesomeIcons.angle_down),
+                iconSize: 20,
                 isExpanded: true,
                 elevation: 16,
                 style: const TextStyle(color: kButtonPrimaryColor),
@@ -234,6 +256,29 @@ class _PreferenceScreenState extends State<PreferenceScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  //////////////////////////////////////////////////////////////Toggle method
+  buildNotificationOptionRow(String title, bool isActive) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 16.0,
+            fontFamily: 'MerriweatherBold',
+          ),
+        ),
+        Transform.scale(
+          scale: 0.7,
+          child: CupertinoSwitch(
+            value: isActive,
+            onChanged: (bool val) {},
+          ),
+        ),
+      ],
     );
   }
 }

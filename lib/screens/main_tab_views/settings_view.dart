@@ -1,3 +1,5 @@
+
+import 'package:Date_Roulette/components/camera_view.dart';
 import 'package:Date_Roulette/components/profile_list_item.dart';
 import 'package:Date_Roulette/components/rounded_button.dart';
 import 'package:Date_Roulette/constants.dart';
@@ -10,23 +12,15 @@ import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 
-// class SettingsView extends StatefulWidget {
-//   static const String id = 'profile_view';
-//
-//   @override
-//   State<StatefulWidget> createState() {
-//     // TODO: implement createState
-//     throw UnimplementedError();
-//   }
-// }
 
 class SettingsView extends StatelessWidget {
   // Start of new theme widget.
   @override
   Widget build(BuildContext context) {
     return ThemeProvider(
-      initTheme: kDarkTheme,
+      initTheme: kLightTheme,
       child: Builder(
         builder: (context) {
           return MaterialApp(
@@ -39,6 +33,26 @@ class SettingsView extends StatelessWidget {
     );
   }
 }
+////////////////////////////////////
+//Start of Camera Class
+////////////////////////////////////
+// File _image;
+// final picker = ImagePicker();
+//
+// Future getImage() async {
+//   final pickedFile = await picker.getImage(source: ImageSource.camera);
+//
+//   setState(() {
+//     if (pickedFile != null) {
+//       _image = File(pickedFile.path);
+//     } else {
+//       print('No image selected.');
+//     }
+//   });
+// }
+//
+// void setState(Null Function() param0) {
+// }
 
 class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -50,12 +64,12 @@ class SettingsScreen extends StatelessWidget {
           Container(
             height: kSpacingUnit.w * 10,
             width: kSpacingUnit.w * 10,
-            margin: EdgeInsets.only(top: kSpacingUnit.w * 3),
+            //margin: EdgeInsets.only(top: kSpacingUnit.w * 3),
             child: Stack(
               children: <Widget>[
                 CircleAvatar(
                   radius: kSpacingUnit.w * 5,
-                  backgroundImage: AssetImage('assets/images/avatar.png'),
+                  backgroundImage: AssetImage('images/John Jacobs.PNG'),
                 ),
                 Align(
                   alignment: Alignment.bottomRight,
@@ -69,10 +83,21 @@ class SettingsScreen extends StatelessWidget {
                     child: Center(
                       heightFactor: kSpacingUnit.w * 1.5,
                       widthFactor: kSpacingUnit.w * 1.5,
-                      child: Icon(
-                        LineAwesomeIcons.pen,
+                      child: IconButton(
+                       icon: const Icon (LineAwesomeIcons.pen),
+                        //////////////////////////////////////////////////////
+                        //on select, Open Camera / Photos
+                        /////////////////////////////////////////////////////
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CameraGallery()),
+                          );
+                        },
                         color: kDarkPrimaryColor,
-                        size: ScreenUtil().setSp(kSpacingUnit.w * 1.5),
+                        iconSize: ScreenUtil().setSp(kSpacingUnit.w * 1.5),
+                        //size: ScreenUtil().setSp(kSpacingUnit.w * 1.5),
                       ),
                     ),
                   ),
@@ -80,31 +105,35 @@ class SettingsScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: kSpacingUnit.w * 2),
           Text(
             'John Jacobs',
-            style: kTitleTextStyle,
+            style:
+            TextStyle(fontSize: 32.0, fontFamily: 'LobsterTwoBold'),
           ),
           SizedBox(height: kSpacingUnit.w * 0.5),
           Text(
             'JJacobs@gmail.com',
-            style: kCaptionTextStyle,
+            style:
+            TextStyle(fontSize: 16.0, fontFamily: 'LobsterTwoBold'),
           ),
           SizedBox(height: kSpacingUnit.w * 2),
-          Container(
-            height: kSpacingUnit.w * 4,
-            width: kSpacingUnit.w * 20,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(kSpacingUnit.w * 3),
-              color: Theme.of(context).accentColor,
-            ),
-            child: Center(
-              child: Text(
-                'Upgrade to PRO',
-                style: kButtonTextStyle,
-              ),
-            ),
-          ),
+          /////////////////////////////////////////////////////////////////////
+          //Upgrade to PRO Button
+          // Container(
+          //   height: kSpacingUnit.w * 4,
+          //   width: kSpacingUnit.w * 20,
+          //   decoration: BoxDecoration(
+          //     borderRadius: BorderRadius.circular(kSpacingUnit.w * 3),
+          //     color: Theme.of(context).accentColor,
+          //   ),
+          //   child: Center(
+          //     child: Text(
+          //       'Upgrade to PRO',
+          //       style: kButtonTextStyle,
+          //     ),
+          //   ),
+          // ),
+          /////////////////////////////////////////////////////////////////////
         ],
       ),
     );
@@ -141,11 +170,11 @@ class SettingsScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        SizedBox(width: kSpacingUnit.w * 3),
-        Icon(
-          LineAwesomeIcons.arrow_left,
-          size: ScreenUtil().setSp(kSpacingUnit.w * 3),
-        ),
+        SizedBox(width: kSpacingUnit.w * 6),
+        // Icon(
+        //   LineAwesomeIcons.arrow_left,
+        //   size: ScreenUtil().setSp(kSpacingUnit.w * 3),
+        // ),
         profileInfo,
         themeSwitcher,
         SizedBox(width: kSpacingUnit.w * 3),
@@ -164,8 +193,8 @@ class SettingsScreen extends StatelessWidget {
                   child: ListView(
                     children: [
                       ProfileListItem(
-                        icon: LineAwesomeIcons.user_shield,
-                        text: 'Profile',
+                        icon: LineAwesomeIcons.user_circle,
+                        text: 'Edit Profile',
                         onPressed: () {
                           Navigator.push(
                             context,
@@ -175,7 +204,7 @@ class SettingsScreen extends StatelessWidget {
                         },
                       ),
                       ProfileListItem(
-                        icon: LineAwesomeIcons.history,
+                        icon: LineAwesomeIcons.horizontal_sliders,
                         text: 'Preferences',
                         onPressed: () {
                           Navigator.push(
@@ -186,7 +215,7 @@ class SettingsScreen extends StatelessWidget {
                         },
                       ),
                       ProfileListItem(
-                        icon: LineAwesomeIcons.question_circle,
+                        icon: LineAwesomeIcons.volume_up,
                         text: 'Notifications',
                         onPressed: () {
                           Navigator.push(
@@ -197,7 +226,7 @@ class SettingsScreen extends StatelessWidget {
                         },
                       ),
                       ProfileListItem(
-                        icon: LineAwesomeIcons.cog,
+                        icon: LineAwesomeIcons.share,
                         text: 'Invite Friends',
                         onPressed: () {
                           Navigator.push(
@@ -206,9 +235,6 @@ class SettingsScreen extends StatelessWidget {
                                 builder: (context) => SharingScreen()),
                           );
                         },
-                      ),
-                      SizedBox(
-                        height: 10.0,
                       ),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -222,18 +248,18 @@ class SettingsScreen extends StatelessWidget {
                               },
                             ),
                             SizedBox(
-                              width: 30.0,
+                              width: 20.0,
                             ),
                             RoundedButton(
                               title: 'Log Out',
                               color: kButtonPrimaryColor,
                               textColor: kColorWhite,
                               onPressed: () {
-                                Navigator.of(context, rootNavigator: true)
-                                    .pop();
+                                Navigator.of(context, rootNavigator: true).pop();
                               },
                             ),
                           ]),
+                      SizedBox(height: 30),
                     ],
                   ),
                 ),

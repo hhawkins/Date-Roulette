@@ -23,10 +23,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  image_picker: ^0.7.4
+    #packages for camera ^
   line_awesome_flutter: ^1.0.1
   flutter_screenutil: ^1.0.2
   animated_theme_switcher: ^1.0.5
-    #Test packages for settings view ^
+    #packages for settings view ^
   shared_preferences: ^2.0.5
   syncfusion_flutter_datepicker: ^19.1.56-beta
   intl: ^0.15.7
