@@ -1,6 +1,5 @@
 import 'package:Date_Roulette/components/rounded_button.dart';
 import 'package:flutter/material.dart';
-
 import '../constants.dart';
 import 'main_tab_screen.dart';
 
@@ -39,7 +38,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 48.0,
+                  height: 20.0,
                 ),
                 TextField(
                   keyboardType: TextInputType.emailAddress,

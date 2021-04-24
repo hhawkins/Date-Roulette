@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 48.0,
+                    height: 20.0,
                   ),
                   TextField(
                     keyboardType: TextInputType.emailAddress,
