@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1025987734651",
+    "project_id": "date-roulette-a7ffc",
+    "storage_bucket": "date-roulette-a7ffc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1025987734651:android:b6be81c0f355b3413d06de",
+        "android_client_info": {
+          "package_name": "com.codeintelx.dateroulette"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1025987734651-lg3mihhnh1n11rrq8121gtioa3l0g8lt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANeYM4OkYvH7lX7cWR_euESBOXHuNQxLo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1025987734651-lg3mihhnh1n11rrq8121gtioa3l0g8lt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1025987734651-ii8ajc9jmuqshi0p2t8b5ocg8vbecrn3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.codeintelx.dateroulette"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
