@@ -1,4 +1,4 @@
-package com.example.Date_Roulette
+package com.codeintelx.dateroulette
 
 import io.flutter.embedding.android.FlutterActivity
 

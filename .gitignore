@@ -39,3 +39,9 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+
+# iOS Podfile related
+ios/Pods
+ios/**/Pods
+ios/Podfile
+ios/Podfile.lock
