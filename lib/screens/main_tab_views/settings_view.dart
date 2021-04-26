@@ -1,4 +1,3 @@
-
 import 'package:Date_Roulette/components/camera_view.dart';
 import 'package:Date_Roulette/components/profile_list_item.dart';
 import 'package:Date_Roulette/components/rounded_button.dart';
@@ -13,7 +12,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
-
 
 class SettingsView extends StatelessWidget {
   // Start of new theme widget.
@@ -67,9 +65,12 @@ class SettingsScreen extends StatelessWidget {
             //margin: EdgeInsets.only(top: kSpacingUnit.w * 3),
             child: Stack(
               children: <Widget>[
-                CircleAvatar(
-                  radius: kSpacingUnit.w * 10,
-                  backgroundImage: AssetImage('images/John Jacobs.PNG'),
+                Hero(
+                  tag: 'ProfilePicture',
+                  child: CircleAvatar(
+                    radius: kSpacingUnit.w * 5,
+                    backgroundImage: AssetImage('images/John Jacobs.PNG'),
+                  ),
                 ),
                 Align(
                   alignment: Alignment.bottomRight,
@@ -107,14 +108,12 @@ class SettingsScreen extends StatelessWidget {
           ),
           Text(
             'John Jacobs',
-            style:
-            TextStyle(fontSize: 32.0, fontFamily: 'LobsterTwoBold'),
+            style: TextStyle(fontSize: 32.0, fontFamily: 'LobsterTwoBold'),
           ),
           SizedBox(height: kSpacingUnit.w * 0.5),
           Text(
             'JJacobs@gmail.com',
-            style:
-            TextStyle(fontSize: 16.0, fontFamily: 'LobsterTwoBold'),
+            style: TextStyle(fontSize: 16.0, fontFamily: 'LobsterTwoBold'),
           ),
           SizedBox(height: kSpacingUnit.w * 2),
           /////////////////////////////////////////////////////////////////////
@@ -255,7 +254,8 @@ class SettingsScreen extends StatelessWidget {
                               color: kButtonPrimaryColor,
                               textColor: kColorWhite,
                               onPressed: () {
-                                Navigator.of(context, rootNavigator: true).pop();
+                                Navigator.of(context, rootNavigator: true)
+                                    .pop();
                               },
                             ),
                           ]),
