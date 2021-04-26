@@ -356,3 +356,145 @@ class _ProfileScreenState extends State<ProfileScreen> {
 //     );
 //   }
 // }
+
+// body: Padding(
+//   padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
+//   child: Center(
+//     child: ListView(
+//       // Column(
+//       children: <Widget>[
+//         Align(
+//           alignment: Alignment.centerLeft,
+//           // child: Container
+//           child: Text(
+//             'First Name',
+//             style:
+//                 TextStyle(fontSize: 16.0, fontFamily: 'MerriweatherBold'),
+//           ),
+//         ),
+//         //////Inserted Method DataInputField;
+//         DataInputField(),
+//         SizedBox(
+//           height: 20.0,
+//         ),
+//         Align(
+//           alignment: Alignment.centerLeft,
+//           // child: Container
+//           child: Text(
+//             'Last Name',
+//             style:
+//                 TextStyle(fontSize: 16.0, fontFamily: 'MerriweatherBold'),
+//           ),
+//         ),
+//         TextField(
+//           keyboardType: TextInputType.emailAddress,
+//           textAlign: TextAlign.center,
+//           // onChanged: (value) {
+//           //   lastName = value;
+//           // },
+//           decoration:
+//               kTextFieldDecoration.copyWith(hintText: 'Enter Last Name'),
+//         ),
+//         SizedBox(
+//           height: 20.0,
+//         ),
+//         Align(
+//           alignment: Alignment.centerLeft,
+//           // child: Container
+//           child: Text(
+//             'Email',
+//             style: TextStyle(
+//               fontSize: 16.0,
+//               fontFamily: 'MerriweatherBold',
+//             ),
+//           ),
+//         ),
+//         TextField(
+//           keyboardType: TextInputType.emailAddress,
+//           textAlign: TextAlign.center,
+//           onChanged: (value) {
+//             email = value;
+//           },
+//           decoration:
+//               kTextFieldDecoration.copyWith(hintText: 'Enter Email'),
+//         ),
+//         SizedBox(
+//           height: 20.0,
+//         ),
+//         Align(
+//           alignment: Alignment.centerLeft,
+//           // child: Container
+//           child: Text(
+//             'Phone Number',
+//             style: TextStyle(
+//               fontSize: 16.0,
+//               fontFamily: 'MerriweatherBold',
+//             ),
+//           ),
+//         ),
+//         TextField(
+//           keyboardType: TextInputType.emailAddress,
+//           textAlign: TextAlign.center,
+//           onChanged: (value) {
+//             email = value;
+//           },
+//           decoration: kTextFieldDecoration.copyWith(
+//               hintText: 'Enter Phone Number'),
+//         ),
+//         SizedBox(
+//           height: 20.0,
+//         ),
+//         Align(
+//           alignment: Alignment.centerLeft,
+//           // child: Container
+//           child: Text(
+//             'Location',
+//             style: TextStyle(
+//               fontSize: 16.0,
+//               fontFamily: 'MerriweatherBold',
+//             ),
+//           ),
+//         ),
+//         TextField(
+//           keyboardType: TextInputType.emailAddress,
+//           textAlign: TextAlign.center,
+//           onChanged: (value) {
+//             email = value;
+//           },
+//           decoration:
+//               kTextFieldDecoration.copyWith(hintText: 'Enter Location'),
+//         ),
+//         SizedBox(
+//           height: 20.0,
+//         ),
+//         Align(
+//           alignment: Alignment.centerLeft,
+//           // child: Container
+//           child: Text(
+//             'Age',
+//             style: TextStyle(
+//               fontSize: 16.0,
+//               fontFamily: 'MerriweatherBold',
+//             ),
+//           ),
+//         ),
+//         TextField(
+//           keyboardType: TextInputType.emailAddress,
+//           textAlign: TextAlign.center,
+//           onChanged: (value) {
+//             email = value;
+//           },
+//           decoration:
+//               kTextFieldDecoration.copyWith(hintText: 'Enter Age'),
+//         ),
+//         SizedBox(
+//           height: 60.0,
+//         ),
+//         // DateTimePicker(),///////////////////////////////////////////////////////////////////////////////////////
+//       ],
+//     ),
+//   ),
+// ),
+//     );
+//   }
+// }

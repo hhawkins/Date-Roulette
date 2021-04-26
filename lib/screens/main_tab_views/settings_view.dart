@@ -68,14 +68,14 @@ class SettingsScreen extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 CircleAvatar(
-                  radius: kSpacingUnit.w * 5,
+                  radius: kSpacingUnit.w * 10,
                   backgroundImage: AssetImage('images/John Jacobs.PNG'),
                 ),
                 Align(
                   alignment: Alignment.bottomRight,
                   child: Container(
-                    height: kSpacingUnit.w * 2.5,
-                    width: kSpacingUnit.w * 2.5,
+                    height: kSpacingUnit.w * 3.5,
+                    width: kSpacingUnit.w * 3.5,
                     decoration: BoxDecoration(
                       color: Theme.of(context).accentColor,
                       shape: BoxShape.circle,
@@ -84,7 +84,7 @@ class SettingsScreen extends StatelessWidget {
                       heightFactor: kSpacingUnit.w * 1.5,
                       widthFactor: kSpacingUnit.w * 1.5,
                       child: IconButton(
-                       icon: const Icon (LineAwesomeIcons.pen),
+                       icon: const Icon (LineAwesomeIcons.camera),
                         //////////////////////////////////////////////////////
                         //on select, Open Camera / Photos
                         /////////////////////////////////////////////////////
@@ -96,7 +96,7 @@ class SettingsScreen extends StatelessWidget {
                           );
                         },
                         color: kDarkPrimaryColor,
-                        iconSize: ScreenUtil().setSp(kSpacingUnit.w * 1.5),
+                        iconSize: ScreenUtil().setSp(kSpacingUnit.w * 2),
                         //size: ScreenUtil().setSp(kSpacingUnit.w * 1.5),
                       ),
                     ),
