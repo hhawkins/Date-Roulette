@@ -23,14 +23,29 @@ class CameraGallery extends StatefulWidget {
 
 class _CameraViewState extends State<CameraGallery> {
   File _image;
-  final picker = ImagePicker();
+  var picker = ImagePicker();
 
   Future getImage() async {
-    final pickedFile = await picker.getImage(source: ImageSource.camera);
-
+    var image = await ImagePicker.platform.pickImage(source: ImageSource.gallery); //getImage(source: ImageSource.gallery);
+    // setState(() {
+    //   _image = image as File;
+    // });
     setState(() {
-      if (pickedFile != null) {
-        _image = File(pickedFile.path);
+      if (image != null) {
+        _image = File(image.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+  Future captureImage() async {
+    var image = await ImagePicker.platform.pickImage(source: ImageSource.camera); //getImage(source: ImageSource.gallery);
+    // setState(() {
+    //   _image = image as File;
+    // });
+    setState(() {
+      if (image != null) {
+        _image = File(image.path);
       } else {
         print('No image selected.');
       }
@@ -49,10 +64,26 @@ class _CameraViewState extends State<CameraGallery> {
             : Image.file(_image),
       ),
       floatingActionButton: Center(
-        child: FloatingActionButton(
-          onPressed: getImage,
-          tooltip: 'Pick Image',
-          child: Icon(LineAwesomeIcons.pen),
+        child: Container(
+          //alignment: AlignmentDirectional.topEnd,
+          child: Padding(
+           padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24), //all(100.0),
+            child: Row(
+              children: [
+                FloatingActionButton(
+                  onPressed: captureImage,
+                  tooltip: 'Select Image',
+                  child: Icon(LineAwesomeIcons.camera),
+                ),
+                SizedBox(width: 60),
+                FloatingActionButton(
+                  onPressed: getImage,
+                  tooltip: 'Pick Image',
+                  child: Icon(LineAwesomeIcons.image),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
