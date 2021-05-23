@@ -4,6 +4,10 @@ import '../../../constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+FirebaseFirestore firestore = FirebaseFirestore.instance;
+
 class ProfileScreen extends StatefulWidget {
   static const String id = 'profile_screen';
 
@@ -78,10 +82,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         actions: [
           IconButton(
+              // Save button
               icon: Icon(LineAwesomeIcons.save),
               iconSize: 30,
               tooltip: 'back to menu',
               onPressed: () {
+                // For now, take the full name and save it to firestore
+
                 Navigator.pop(context);
                 _saveUserInput();
               }),

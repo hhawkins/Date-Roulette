@@ -7,16 +7,49 @@ import 'package:flutter/material.dart';
 
 import 'constants.dart';
 
+// Import the firebase_core plugin
+import 'package:firebase_core/firebase_core.dart';
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(DateRoulette());
 }
 
 class DateRoulette extends StatelessWidget {
+  // Create the initialization Future outside of `build`:
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: _initialization,
+      builder: (context, snapshot) {
+        // Check for errors
+        if (snapshot.hasError) {
+          return LoadingOrErrorScreen();
+        }
+
+        // Once complete, show your application
+        if (snapshot.connectionState == ConnectionState.done) {
+          return DateRouletteApp();
+        }
+
+        // Otherwise, show something whilst waiting for initialization to complete
+        return LoadingOrErrorScreen();
+      },
+    );
+  }
+}
+
+class DateRouletteApp extends StatelessWidget {
+  const DateRouletteApp({
+    Key key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           scaffoldBackgroundColor: kColorWhite,
           primaryColor: kButtonPrimaryColor,
@@ -29,5 +62,16 @@ class DateRoulette extends StatelessWidget {
           SignupScreen.id: (context) => SignupScreen(),
           MainTabScreen.id: (context) => MainTabScreen(),
         });
+  }
+}
+
+class LoadingOrErrorScreen extends StatelessWidget {
+  const LoadingOrErrorScreen({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(home: Scaffold());
   }
 }
