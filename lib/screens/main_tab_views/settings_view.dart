@@ -13,6 +13,10 @@ import 'package:flutter_screenutil/screenutil.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'package:firebase_auth/firebase_auth.dart';
+
+FirebaseAuth _auth = FirebaseAuth.instance;
+
 class SettingsView extends StatelessWidget {
   // Start of new theme widget.
   @override
@@ -85,7 +89,7 @@ class SettingsScreen extends StatelessWidget {
                       heightFactor: kSpacingUnit.w * 1.5,
                       widthFactor: kSpacingUnit.w * 1.5,
                       child: IconButton(
-                       icon: const Icon (LineAwesomeIcons.camera),
+                        icon: const Icon(LineAwesomeIcons.camera),
                         //////////////////////////////////////////////////////
                         //on select, Open Camera / Photos
                         /////////////////////////////////////////////////////
@@ -106,6 +110,7 @@ class SettingsScreen extends StatelessWidget {
               ],
             ),
           ),
+          // Set a stream so it can pull the name
           Text(
             'John Jacobs',
             style: TextStyle(fontSize: 32.0, fontFamily: 'LobsterTwoBold'),
@@ -253,7 +258,8 @@ class SettingsScreen extends StatelessWidget {
                               title: 'Log Out',
                               color: kButtonPrimaryColor,
                               textColor: kColorWhite,
-                              onPressed: () {
+                              onPressed: () async {
+                                await _auth.signOut();
                                 Navigator.of(context, rootNavigator: true)
                                     .pop();
                               },
