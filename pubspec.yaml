@@ -41,6 +41,8 @@ dependencies:
   sliding_up_panel: ^1.0.2
   clickable_list_wheel_view: ^0.0.4
 
+  http: ^0.13.3
+
   #packages for Firebase
   firebase_core: ^1.0.4
   # Add the dependency for the FlutterFire plugin for Google Analytics

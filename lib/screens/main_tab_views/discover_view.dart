@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:swipeable_card/swipeable_card.dart';
 
 import 'chamber_cards/card_example.dart';
+import 'chamber_cards/card_place.dart';
 
 class DiscoverView extends StatefulWidget {
   static const String id = 'chamber_view';
@@ -19,14 +19,18 @@ class _DiscoverViewState extends State<DiscoverView> {
     super.initState();
   }
 
-  final List<CardExample> cards = [
-    CardExample(color: Colors.red, text: "First date"),
-    CardExample(color: Colors.blue, text: "Second date"),
-    CardExample(color: Colors.orange),
-    CardExample(color: Colors.indigo),
-    CardExample(color: Colors.green, text: "The next card is the last date"),
-    CardExample(color: Colors.purple, text: "This is the last date"),
+  final List<CardPlace> cards = [
+    CardPlace(color: Colors.red),
   ];
+
+  // final List<CardExample> cards = [
+  //   CardExample(color: Colors.red, text: "First date"),
+  //   CardExample(color: Colors.blue, text: "Second date"),
+  //   CardExample(color: Colors.orange),
+  //   CardExample(color: Colors.indigo),
+  //   CardExample(color: Colors.green, text: "The next card is the last date"),
+  //   CardExample(color: Colors.purple, text: "This is the last date"),
+  // ];
   int currentCardIndex = 0;
 
   @override
