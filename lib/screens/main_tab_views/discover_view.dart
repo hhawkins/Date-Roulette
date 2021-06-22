@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -5,6 +6,22 @@ import 'package:swipeable_card/swipeable_card.dart';
 
 import 'chamber_cards/card_example.dart';
 import 'chamber_cards/card_place.dart';
+
+import 'package:http/http.dart' as http;
+
+class Places {
+  final List<dynamic> results;
+
+  Places({
+    this.results,
+  });
+
+  factory Places.fromJson(Map<String, dynamic> json) {
+    return Places(
+      results: json['results'],
+    );
+  }
+}
 
 class DiscoverView extends StatefulWidget {
   static const String id = 'chamber_view';
@@ -14,55 +31,104 @@ class DiscoverView extends StatefulWidget {
 }
 
 class _DiscoverViewState extends State<DiscoverView> {
+  Future myFuture;
+
   @override
   void initState() {
-    super.initState();
+    // super.initState();
+    myFuture = getGooglePlacesResponse();
   }
 
-  final List<CardPlace> cards = [
-    CardPlace(color: Colors.red),
-  ];
+  Future<Places> getGooglePlacesResponse() async {
+    final response = await http.get(Uri.parse(
+        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=38.7818,-77.0147&radius=300&type=restaurant&keyword=seafood&key=AIzaSyCqs1WuJw_CaNfLY7ndChXWBd6BJ38glTE'
+        // 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyCqs1WuJw_CaNfLY7ndChXWBd6BJ38glTE&location=-38.7818,77.0147&radius=1500&type=restaurant'
+        ));
 
-  // final List<CardExample> cards = [
-  //   CardExample(color: Colors.red, text: "First date"),
-  //   CardExample(color: Colors.blue, text: "Second date"),
-  //   CardExample(color: Colors.orange),
-  //   CardExample(color: Colors.indigo),
-  //   CardExample(color: Colors.green, text: "The next card is the last date"),
-  //   CardExample(color: Colors.purple, text: "This is the last date"),
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      return Places.fromJson(jsonDecode(response.body));
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Failed to load results');
+    }
+  }
+
+  // final List<CardPlace> cards = [
+  //   //CardPlace(color: Colors.red),
   // ];
+
+  final List<CardExample> cards = [
+    // CardExample(color: Colors.red, text: "First date"),
+    // CardExample(color: Colors.blue, text: "Second date"),
+    // CardExample(color: Colors.orange),
+    // CardExample(color: Colors.indigo),
+    // CardExample(color: Colors.green, text: "The next card is the last date"),
+    // CardExample(color: Colors.purple, text: "This is the last date"),
+  ];
   int currentCardIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     SwipeableWidgetController _cardController = SwipeableWidgetController();
+    bool alreadyChecked = false;
     return Scaffold(
         body: Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          if (currentCardIndex < cards.length)
-            buildSwipeableWidget()
-          else
-            // if the deck is complete, add a button to reset deck
-            Center(
-              child: FlatButton(
-                child: Text("Reset deck"),
-                onPressed: () => setState(() => currentCardIndex = 0),
-              ),
-            ),
-          // only show the card controlling buttons when there are cards
-          // otherwise, just hide it
-          if (currentCardIndex < cards.length)
-            cardControllerRow(_cardController),
-        ],
-      ),
+      child: FutureBuilder(
+          future: myFuture,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              if (!alreadyChecked) {
+                for (var place in snapshot.data.results) {
+                  cards
+                      .add(CardExample(color: Colors.red, text: place['name']));
+                }
+
+                alreadyChecked = true;
+              }
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  if (currentCardIndex < cards.length)
+                    buildSwipeableWidget(snapshot.data)
+                  else
+                    // if the deck is complete, add a button to reset deck
+                    Center(
+                      child: FlatButton(
+                        child: Text("Reset deck"),
+                        onPressed: () => setState(() => currentCardIndex = 0),
+                      ),
+                    ),
+                  // only show the card controlling buttons when there are cards
+                  // otherwise, just hide it
+                  if (currentCardIndex < cards.length)
+                    cardControllerRow(_cardController),
+                ],
+              );
+            } else if (snapshot.hasError) {
+              throw snapshot.error;
+            } else {
+              return Container(
+                child: Text(
+                  "Loading",
+                  style: TextStyle(
+                    fontSize: 36.0,
+                    // color: Colors.white,
+                    color: Colors.white.withOpacity(0.8),
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              );
+            }
+          }),
     ));
   }
 
-  Widget buildSwipeableWidget() {
+  Widget buildSwipeableWidget(Places results) {
     if (Platform.isAndroid) {
       return SwipeableWidget(
         key: ObjectKey(currentCardIndex),
