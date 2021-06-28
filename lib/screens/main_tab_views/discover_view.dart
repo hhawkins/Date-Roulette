@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:swipeable_card/swipeable_card.dart';
 
+import '../../constants.dart';
 import 'chamber_cards/card_example.dart';
 import 'chamber_cards/card_place.dart';
 
@@ -41,7 +42,7 @@ class _DiscoverViewState extends State<DiscoverView> {
 
   Future<Places> getGooglePlacesResponse() async {
     final response = await http.get(Uri.parse(
-        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=38.7818,-77.0147&radius=300&type=restaurant&keyword=seafood&key=AIzaSyCqs1WuJw_CaNfLY7ndChXWBd6BJ38glTE'
+        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=38.7818,-77.0147&radius=1500&keyword=hotel&key=AIzaSyCqs1WuJw_CaNfLY7ndChXWBd6BJ38glTE'
         // 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyCqs1WuJw_CaNfLY7ndChXWBd6BJ38glTE&location=-38.7818,77.0147&radius=1500&type=restaurant'
         ));
 
@@ -70,62 +71,83 @@ class _DiscoverViewState extends State<DiscoverView> {
   ];
   int currentCardIndex = 0;
 
+  // //this will extract url to get photo
+  // String photoUrl = PlacePhotoRequest(
+  //   key: 'AIzaSyCqs1WuJw_CaNfLY7ndChXWBd6BJ38glTE',
+  //   photoRefernce: 'PHOTO_REFERENCE_HERE',
+  //   maxHeight: 400, //this value should be in 1~1600, default is 1600
+  //   maxWidth: 400, //this value should be in 1~1600, default is 1600
+  // ).buildUrl();
+//
+// /*---------In Widget-------------*/
+//   Image.network(photoUrl);
+
   @override
   Widget build(BuildContext context) {
     SwipeableWidgetController _cardController = SwipeableWidgetController();
     bool alreadyChecked = false;
     return Scaffold(
-        body: Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24.0),
-      child: FutureBuilder(
-          future: myFuture,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              if (!alreadyChecked) {
-                for (var place in snapshot.data.results) {
-                  cards
-                      .add(CardExample(color: Colors.red, text: place['name']));
-                }
+      body:
+      Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('images/roulette wheel table.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24.0),
+          child: FutureBuilder(
+              future: myFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  if (!alreadyChecked) {
+                    for (var place in snapshot.data.results) {
+                      cards.add(
+                          CardExample(color: Colors.red, text: place['name']));
+                    }
 
-                alreadyChecked = true;
-              }
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  if (currentCardIndex < cards.length)
-                    buildSwipeableWidget(snapshot.data)
-                  else
-                    // if the deck is complete, add a button to reset deck
-                    Center(
-                      child: FlatButton(
-                        child: Text("Reset deck"),
-                        onPressed: () => setState(() => currentCardIndex = 0),
+                    alreadyChecked = true;
+                  }
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      if (currentCardIndex < cards.length)
+                        buildSwipeableWidget(snapshot.data)
+                      else
+                        // if the deck is complete, add a button to reset deck
+                        Center(
+                          child: FlatButton(
+                            child: Text("Reset deck"),
+                            onPressed: () => setState(() => currentCardIndex = 0),
+                          ),
+                        ),
+                      // only show the card controlling buttons when there are cards
+                      // otherwise, just hide it
+                      if (currentCardIndex < cards.length)
+                        cardControllerRow(_cardController),
+                    ],
+                  );
+                } else if (snapshot.hasError) {
+                  throw snapshot.error;
+                } else {
+                  return Container(
+                    child: Text(
+                      "Loading",
+                      style: TextStyle(
+                        fontSize: 36.0,
+                        // color: Colors.white,
+                        color: Colors.white.withOpacity(0.8),
+                        fontWeight: FontWeight.w900,
                       ),
                     ),
-                  // only show the card controlling buttons when there are cards
-                  // otherwise, just hide it
-                  if (currentCardIndex < cards.length)
-                    cardControllerRow(_cardController),
-                ],
-              );
-            } else if (snapshot.hasError) {
-              throw snapshot.error;
-            } else {
-              return Container(
-                child: Text(
-                  "Loading",
-                  style: TextStyle(
-                    fontSize: 36.0,
-                    // color: Colors.white,
-                    color: Colors.white.withOpacity(0.8),
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
-              );
-            }
-          }),
-    ));
+                  );
+                }
+              }),
+        ),
+      ),
+    );
   }
 
   Widget buildSwipeableWidget(Places results) {
@@ -202,3 +224,7 @@ class _DiscoverViewState extends State<DiscoverView> {
     );
   }
 }
+
+class PlacePhotoRequest {
+}
+

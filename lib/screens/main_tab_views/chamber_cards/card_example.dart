@@ -30,17 +30,27 @@ class CardExample extends StatelessWidget {
           width: 2.0,
           color: Colors.transparent.withOpacity(0.3),
         ),
+        image: DecorationImage(
+          image: AssetImage('images/Date background example.jpg'),
+          fit: BoxFit.cover,
+        ),
       ),
 
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text(
-            text,
-            style: TextStyle(
-              fontSize: 36.0,
-              // color: Colors.white,
-              color: Colors.white.withOpacity(0.8),
-              fontWeight: FontWeight.w900,
+          Container(
+            //margin: const EdgeInsets.all(15.0),
+            //padding: const EdgeInsets.all(35.0),
+            child: Text(
+              text,
+              style: TextStyle(
+                fontSize: 24.0,
+                fontFamily: 'ZillaSlabHighlightBold',
+                // color: Colors.white,
+                color: Colors.white.withOpacity(0.8),
+                fontWeight: FontWeight.w900,
+              ),
             ),
           ),
           Expanded(
