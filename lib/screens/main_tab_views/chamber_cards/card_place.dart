@@ -46,7 +46,7 @@ class CardPlace extends StatelessWidget {
 
   Future<Places> getGooglePlacesResponse() async {
     final response = await http.get(Uri.parse(
-        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=38.7818,77.0147&radius=300&type=seafood&key=AIzaSyCqs1WuJw_CaNfLY7ndChXWBd6BJ38glTE'
+        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-38.7818,77.0147&radius=300&type=restaurant&key=AIzaSyCqs1WuJw_CaNfLY7ndChXWBd6BJ38glTE'
         // 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyCqs1WuJw_CaNfLY7ndChXWBd6BJ38glTE&location=-38.7818,77.0147&radius=1500&type=restaurant'
         ));
 
@@ -57,7 +57,7 @@ class CardPlace extends StatelessWidget {
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.
-      throw Exception('Failed to load results');
+      throw Exception('Failed to load album');
     }
   }
 
@@ -96,7 +96,7 @@ class CardPlace extends StatelessWidget {
               if (snapshot.connectionState == ConnectionState.done) {
                 return Container(
                   child: Text(
-                    snapshot.data.results[0]['name'],
+                    snapshot.data['name'],
                     style: TextStyle(
                       fontSize: 36.0,
                       // color: Colors.white,
