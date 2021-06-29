@@ -8,9 +8,56 @@ class CardExample extends StatelessWidget {
     Key key,
     this.color = Colors.indigo,
     this.text = "Date Example",
+    this.photoReference = "",
+    this.maxHeight = 400,
+    this.maxWidth = 400,
   }) : super(key: key);
   final Color color;
   final String text;
+  final String photoReference;
+  final int maxHeight;
+  final int maxWidth;
+
+  String PlacePhotoRequest(
+      {String key, String photoRefernce, int maxHeight, int maxWidth}) {
+    return "https://maps.googleapis.com/maps/api/place/photo?" +
+        "maxwidth=" +
+        maxWidth.toString() +
+        "&maxheight=" +
+        maxHeight.toString() +
+        "&photoreference=" +
+        photoReference +
+        "&key=" +
+        key;
+  }
+
+  Image getCardImage(String photoReference, int maxHeight, int maxWidth) {
+    //this will extract url to get photo
+    String photoUrl = PlacePhotoRequest(
+      key: 'AIzaSyCqs1WuJw_CaNfLY7ndChXWBd6BJ38glTE',
+      photoRefernce: photoReference,
+      maxHeight: maxHeight, //this value should be in 1~1600, default is 1600
+      maxWidth: maxWidth, //this value should be in 1~1600, default is 1600
+    );
+
+    return Image.network(
+      photoUrl, //"assets/images/subjects/api_given_image_name.png",
+      width: 400,
+      errorBuilder:
+          (BuildContext context, Object exception, StackTrace stackTrace) {
+        return Image.asset(
+          'images/Date background example.jpg',
+          width: 400,
+        );
+      },
+    );
+
+    // try {
+    //   return AssetImage(photoUrl);
+    // } catch (error) {
+    //   return AssetImage('images/Date background example.jpg');
+    // }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +78,7 @@ class CardExample extends StatelessWidget {
           color: Colors.transparent.withOpacity(0.3),
         ),
         image: DecorationImage(
-          image: AssetImage('images/Date background example.jpg'),
+          image: getCardImage(photoReference, maxHeight, maxWidth).image,
           fit: BoxFit.cover,
         ),
       ),

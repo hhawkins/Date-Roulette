@@ -87,8 +87,7 @@ class _DiscoverViewState extends State<DiscoverView> {
     SwipeableWidgetController _cardController = SwipeableWidgetController();
     bool alreadyChecked = false;
     return Scaffold(
-      body:
-      Container(
+      body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage('images/roulette wheel table.jpg'),
@@ -103,8 +102,13 @@ class _DiscoverViewState extends State<DiscoverView> {
                 if (snapshot.connectionState == ConnectionState.done) {
                   if (!alreadyChecked) {
                     for (var place in snapshot.data.results) {
-                      cards.add(
-                          CardExample(color: Colors.red, text: place['name']));
+                      cards.add(CardExample(
+                        color: Colors.red,
+                        text: place['name'],
+                        photoReference: place['photos'][0]['photo_reference'],
+                        maxHeight: 600,
+                        maxWidth: 400,
+                      ));
                     }
 
                     alreadyChecked = true;
@@ -120,7 +124,8 @@ class _DiscoverViewState extends State<DiscoverView> {
                         Center(
                           child: FlatButton(
                             child: Text("Reset deck"),
-                            onPressed: () => setState(() => currentCardIndex = 0),
+                            onPressed: () =>
+                                setState(() => currentCardIndex = 0),
                           ),
                         ),
                       // only show the card controlling buttons when there are cards
@@ -224,7 +229,3 @@ class _DiscoverViewState extends State<DiscoverView> {
     );
   }
 }
-
-class PlacePhotoRequest {
-}
-
