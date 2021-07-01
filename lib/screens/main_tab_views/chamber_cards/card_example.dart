@@ -92,11 +92,10 @@ class CardExample extends StatelessWidget {
             child: Text(
               text,
               style: TextStyle(
-                fontSize: 24.0,
-                fontFamily: 'ZillaSlabHighlightBold',
-                // color: Colors.white,
-                color: Colors.white.withOpacity(0.8),
-                fontWeight: FontWeight.w900,
+                fontSize: 32.0,
+                fontFamily: 'MerriweatherBoldItalic',
+                 color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),

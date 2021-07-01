@@ -42,8 +42,11 @@ class _DiscoverViewState extends State<DiscoverView> {
 
   Future<Places> getGooglePlacesResponse() async {
     final response = await http.get(Uri.parse(
-        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=38.7818,-77.0147&radius=1500&keyword=hotel&key=AIzaSyCqs1WuJw_CaNfLY7ndChXWBd6BJ38glTE'
-        // 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyCqs1WuJw_CaNfLY7ndChXWBd6BJ38glTE&location=-38.7818,77.0147&radius=1500&type=restaurant'
+        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
+            'location=38.7818,-77.0147'
+            '&radius=1500'
+            '&keyword=restaurant'
+            '&key=AIzaSyCqs1WuJw_CaNfLY7ndChXWBd6BJ38glTE'
         ));
 
     if (response.statusCode == 200) {
@@ -57,10 +60,6 @@ class _DiscoverViewState extends State<DiscoverView> {
     }
   }
 
-  // final List<CardPlace> cards = [
-  //   //CardPlace(color: Colors.red),
-  // ];
-
   final List<CardExample> cards = [
     // CardExample(color: Colors.red, text: "First date"),
     // CardExample(color: Colors.blue, text: "Second date"),
@@ -71,16 +70,6 @@ class _DiscoverViewState extends State<DiscoverView> {
   ];
   int currentCardIndex = 0;
 
-  // //this will extract url to get photo
-  // String photoUrl = PlacePhotoRequest(
-  //   key: 'AIzaSyCqs1WuJw_CaNfLY7ndChXWBd6BJ38glTE',
-  //   photoRefernce: 'PHOTO_REFERENCE_HERE',
-  //   maxHeight: 400, //this value should be in 1~1600, default is 1600
-  //   maxWidth: 400, //this value should be in 1~1600, default is 1600
-  // ).buildUrl();
-//
-// /*---------In Widget-------------*/
-//   Image.network(photoUrl);
 
   @override
   Widget build(BuildContext context) {
@@ -92,6 +81,7 @@ class _DiscoverViewState extends State<DiscoverView> {
           image: DecorationImage(
             image: AssetImage('images/roulette wheel table.jpg'),
             fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.8), BlendMode.dstATop)
           ),
         ),
         child: Padding(
@@ -142,7 +132,6 @@ class _DiscoverViewState extends State<DiscoverView> {
                       "Loading",
                       style: TextStyle(
                         fontSize: 36.0,
-                        // color: Colors.white,
                         color: Colors.white.withOpacity(0.8),
                         fontWeight: FontWeight.w900,
                       ),
