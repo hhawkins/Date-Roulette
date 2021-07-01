@@ -22,7 +22,7 @@ class NewItem {
 class _ChamberViewState extends State<ChamberView> {
   final _scrollController = FixedExtentScrollController();
 
-  static const double _itemHeight = 70;
+  static const double _itemHeight = 100;
   static const int _itemCount = 100;
 
   @override
@@ -34,7 +34,7 @@ class _ChamberViewState extends State<ChamberView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.0),
+        padding: EdgeInsets.symmetric(horizontal: 48.0),
         child: ClickableListWheelScrollView(
           scrollController: _scrollController,
           itemHeight: _itemHeight,
@@ -47,11 +47,12 @@ class _ChamberViewState extends State<ChamberView> {
             );
           },
           child: ListWheelScrollView.useDelegate(
+            clipBehavior: Clip.hardEdge,
             controller: _scrollController,
             itemExtent: _itemHeight,
             physics: FixedExtentScrollPhysics(),
-            overAndUnderCenterOpacity: 0.5,
-            perspective: 0.002,
+            overAndUnderCenterOpacity: 0.25,
+            perspective: 0.004,
             onSelectedItemChanged: (index) {
               print("onSelectedItemChanged index: $index");
             },
